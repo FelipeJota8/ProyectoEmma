@@ -17,6 +17,7 @@ class CreateHumedadsTable extends Migration
             $table->id();
             $table->string('humedad');
             $table->integer('raspberry_id')->unsigned();
+            $table->foreignId('raspberry_pi')->nullable()->constrained('raspberry_pi')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
