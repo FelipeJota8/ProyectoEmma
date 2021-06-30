@@ -16,6 +16,8 @@ class CreateHumedadRiegosTable extends Migration
         Schema::create('humedad_riegos', function (Blueprint $table) {
             $table->id();
             $table->string('humedad_riego');
+            $table->integer('raspberry_id')->unsigned();
+            $table->foreignId('raspberry_pi')->nullable()->constrained('raspberry_pi')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

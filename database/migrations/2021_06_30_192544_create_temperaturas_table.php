@@ -18,6 +18,7 @@ class CreateTemperaturasTable extends Migration
             $table->string('humedad');
             $table->integer('raspberry_id')->unsigned();
             $table->timestamps();
+            $table->foreignId('raspberry_pi')->nullable()->constrained('raspberry_pi')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

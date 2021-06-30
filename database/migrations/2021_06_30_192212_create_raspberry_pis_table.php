@@ -13,7 +13,7 @@ class CreateRaspberryPisTable extends Migration
      */
     public function up()
     {
-        Schema::create('raspberry_pis', function (Blueprint $table) {
+        Schema::create('raspberry_pi', function (Blueprint $table) {
             $table->id();
             $table->string('modelo');
             $table->string('estado');
