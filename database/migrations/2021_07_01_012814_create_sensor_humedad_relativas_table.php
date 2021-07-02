@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHumedadRiegosTable extends Migration
+class CreateSensorHumedadRelativasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateHumedadRiegosTable extends Migration
      */
     public function up()
     {
-        Schema::create('humedad_riegos', function (Blueprint $table) {
+        Schema::create('sensor_humedad_relativas', function (Blueprint $table) {
             $table->id();
-            $table->string('humedad_riego');
-            $table->integer('raspberry_id')->unsigned();
-            $table->foreignId('raspberry_pi')->nullable()->constrained('raspberry_pi')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('val')->nullable();
+            $table->foreignId('raspberry_id')->nullable()->constrained('raspberries')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateHumedadRiegosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('humedad_riegos');
+        Schema::dropIfExists('sensor_humedad_relativas');
     }
 }

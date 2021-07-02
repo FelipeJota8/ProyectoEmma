@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Humedad extends Model
+class SensorHumedad extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'humedad',
+        'val',
         'raspberry_id',
     ];
 }

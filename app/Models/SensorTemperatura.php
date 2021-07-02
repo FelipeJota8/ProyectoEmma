@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RaspberryPi extends Model
+class SensorTemperatura extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'modelo',
-        'estado',
+        'val',
+        'raspberry_id',
     ];
 }

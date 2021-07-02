@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRaspberryPisTable extends Migration
+class CreateSensorHumedadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateRaspberryPisTable extends Migration
      */
     public function up()
     {
-        Schema::create('raspberry_pi', function (Blueprint $table) {
+        Schema::create('sensor_humedads', function (Blueprint $table) {
             $table->id();
-            $table->string('modelo');
-            $table->string('estado');
+            $table->string('val')->nullable();
+            $table->foreignId('raspberry_id')->nullable()->constrained('raspberries')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateRaspberryPisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('raspberry_pis');
+        Schema::dropIfExists('sensor_humedads');
     }
 }

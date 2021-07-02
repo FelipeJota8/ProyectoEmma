@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTemperaturasTable extends Migration
+class CreateSensorTemperaturasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateTemperaturasTable extends Migration
      */
     public function up()
     {
-        Schema::create('temperaturas', function (Blueprint $table) {
+        Schema::create('sensor_temperaturas', function (Blueprint $table) {
             $table->id();
-            $table->string('humedad');
-            $table->integer('raspberry_id')->unsigned();
+            $table->string('val')->nullable();
+            $table->foreignId('raspberry_id')->nullable()->constrained('raspberries')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
-            $table->foreignId('raspberry_pi')->nullable()->constrained('raspberry_pi')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -29,6 +28,6 @@ class CreateTemperaturasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('temperaturas');
+        Schema::dropIfExists('sensor_temperaturas');
     }
 }
